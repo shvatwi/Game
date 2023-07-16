@@ -10,7 +10,6 @@ const { width, height } = Dimensions.get("window");
 export default function App() {
   const [running, setRunning] = useState(false);
   const [gameEngine1, setGameEngine1] = useState(null);
-  const [gameEngine2, setGameEngine2] = useState(null);
   const [currentPoints, setCurrentPoints] = useState(0);
 
   useEffect(() => {
@@ -42,16 +41,6 @@ export default function App() {
             setCurrentPoints={setCurrentPoints}
           />
         </View>
-        <View style={styles.area2}>
-          <Game
-            running={running}
-            setRunning={setRunning}
-            gameEngine={gameEngine2}
-            setGameEngine={setGameEngine2}
-            currentPoints={currentPoints}
-            setCurrentPoints={setCurrentPoints}
-          />
-        </View>
       </View>
 
       {!running && (
@@ -62,7 +51,6 @@ export default function App() {
               setCurrentPoints(0);
               setRunning(true);
               gameEngine1.swap(entities());
-              gameEngine2.swap(entities());
             }}
           >
             <Text style={styles.startButtonText}>START GAME</Text>
@@ -79,12 +67,7 @@ const styles = StyleSheet.create({
   },
   area1: {
     flex: 1,
-    backgroundColor: "blue",
-    opacity: 0.5,
-  },
-  area2: {
-    flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "grey",
     opacity: 0.5,
   },
   startButtonContainer: {
